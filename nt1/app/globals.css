@@ -314,3 +314,113 @@ textarea.input {
   line-height: 1;
   color: var(--accent-light);
 }
+
+/* ═══ Mobile Improvements ═══ */
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1.25rem;
+    --section-padding-mobile: 48px;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .page-hero {
+    padding: 120px 0 48px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 0.8rem 1.75rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stat-value {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+}
+
+/* ═══ Timeline ═══ */
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-glow), transparent);
+}
+
+@media (min-width: 768px) {
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--background);
+  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 20px rgba(0, 229, 160, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+.timeline-dot-pulse {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--accent-glow), 0 0 20px rgba(0, 229, 160, 0.3); }
+  50% { box-shadow: 0 0 0 6px var(--accent-glow), 0 0 30px rgba(0, 229, 160, 0.5); }
+}
+
+/* ═══ Service Card Hover Effects ═══ */
+.service-card-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--background-elevated);
+  border: 1px solid var(--border);
+}
+
+.service-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.group:hover .service-card-image::after {
+  opacity: 1;
+}
+
+/* ═══ Floating animation ═══ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ═══ Staggered fade-in for mobile ═══ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
